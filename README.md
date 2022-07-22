@@ -2,9 +2,12 @@
 
 ## Run
 
+Create a `.env` file and provide a `DATABASE_URL` environment variable
+
 ```bash
 npm i
 npm run prisma:generate
+npm run prisma:migrate-deploy
 npm start
 ```
 
