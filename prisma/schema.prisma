@@ -11,6 +11,23 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model SampleModel {
-    id Int @id @default(autoincrement())
+model Group {
+    id    Int    @id @default(autoincrement())
+    name  String
+    slots Slot[]
+}
+
+model Slot {
+    id         Int       @id @default(autoincrement())
+    from       DateTime
+    groupId    Int
+    group      Group     @relation(fields: [groupId], references: [id])
+    capacityId Int?
+    capacity   Capacity? @relation(fields: [capacityId], references: [id])
+}
+
+model Capacity {
+    id    Int    @id @default(autoincrement())
+    count Int
+    slots Slot[]
 }
